@@ -1,6 +1,8 @@
 
 # Amazon Review Lab
 
+![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/blob/main/pics/amazon.avif)
+
 ## Genel Bakış
 
 Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmiş güçlü bir uygulamadır. Kullanıcılar, bir Amazon ürün linki girerek yorumlardan kategorize edilmiş, özetlenmiş ve duygu analiziyle desteklenmiş bilgiler elde edebilir. Bu uygulama, yorum analizi sürecini kolaylaştırarak hızlı ve etkili izlenimler sunar.
