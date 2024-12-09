@@ -73,7 +73,7 @@ def link_input_page():
             return
 
         # API isteği gönderme
-        url = "http://127.0.0.1:2121/predict/"
+        url = "http://127.0.0.1:4000/predict/"
         data = {"link": link}
 
         try:
