@@ -3,7 +3,7 @@
 
 ## Genel Bakış
 
-Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmiş güçlü bir aracıdır. Kullanıcılar, bir Amazon ürün linki girerek yorumlardan kategorize edilmiş, özetlenmiş ve duygu analiziyle desteklenmiş bilgiler elde edebilir. Bu uygulama, yorum analizi sürecini kolaylaştırarak hızlı ve etkili içgörüler sunar.
+Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmiş güçlü bir uygulamadır. Kullanıcılar, bir Amazon ürün linki girerek yorumlardan kategorize edilmiş, özetlenmiş ve duygu analiziyle desteklenmiş bilgiler elde edebilir. Bu uygulama, yorum analizi sürecini kolaylaştırarak hızlı ve etkili izlenimler sunar.
 
 ## Özellikler
 
@@ -19,6 +19,9 @@ Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmi�
 3. **Yorum Sınıflandırma**: Yorumlar, önceden eğitilmiş bir model kullanılarak kategorilere ayrılır.
 4. **Özetleme**: Gelişmiş doğal dil işleme teknikleriyle kategorize edilmiş yorumlar özetlenir.
 5. **Sonuç Görüntüleme**: Sonuçlar, her kategoriyi detaylıca inceleme imkânıyla bir panoda sunulur.
+
+![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/raw/main/pics/schema.png)
+
 
 ## Uygulama Mimarisi
 
