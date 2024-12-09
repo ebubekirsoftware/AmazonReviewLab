@@ -100,6 +100,28 @@ Bu proje, modüler tasarlanmış bir dosya yapısına sahiptir. Her bir dizin ve
 - Bir llm modeli olan Llama3 kullanarak kategori bazında özetler ve genel sonuçlar oluşturur. Model local bir şekilde Ollama üzerinden kullanılır.
 - Dosya: `src/summarization.py`.
 
+### Llama3 ile Özetleme için Ollama Kullanımı
+
+Ollama, büyük dil modellerinin (LLM) yerel olarak çalıştırılması için tasarlanmış bir framework’tür. Llama3 ile özetleme yaparken Ollama’yı tercih etmemizin nedenleri şunlardır:
+
+1. **Yerel Çalıştırma**: Llama3’ü yerelde çalıştırarak veri gizliliği ve güvenliği sağlar.
+2. **Performans Optimizasyonu**: Büyük modellerde bile yüksek performans sunar. CPU ve GPU optimizasyonuyla hızlı yanıt üretir.
+3. **Kolay Kullanım**: Geliştirici dostu araçlarla entegrasyonu kolaylaştırır.
+
+![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/blob/main/pics/llama.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Docker Entegrasyonu
 
 - **Konteynerler**: Uygulama iki Docker konteyneriyle yönetilir—biri ana API, diğeri ise özetleme modeli içindir.
