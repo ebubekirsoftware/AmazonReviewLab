@@ -226,6 +226,6 @@ Her iki yöntemle de uygulama aynı şekilde çalışacaktır. Docker ile çalı
 
 ## Geliştirici
 
-- **Ebubekir Tosun** - Geliştirici ve Bakımcı
+- **Ebubekir Tosun**
 
 
