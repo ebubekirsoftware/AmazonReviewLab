@@ -27,9 +27,9 @@ Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmi�
 
 Uygulama aşağıdaki yapıyı kullanır:
 
-- **Önyüz**: Etkileşimli bir kullanıcı deneyimi için Streamlit ile geliştirilmiştir.
-- **Arka Uç**: API isteklerini ve model çıkarımlarını yönetmek için FastAPI kullanılmıştır.
-- **Veri Boru Hattı**: Veri toplama, işleme ve görüntüleme için birden fazla bileşen entegre edilmiştir.
+- **Frontend**: Etkileşimli bir kullanıcı deneyimi için Streamlit ile geliştirilmiştir.
+- **Backend**: API isteklerini ve model çıkarımlarını yönetmek için FastAPI kullanılmıştır.
+- **Data Pipeline**: Veri toplama, işleme ve görüntüleme için birden fazla bileşen entegre edilmiştir.
 
 ### Dosya Yapısı
 
@@ -67,34 +67,33 @@ Uygulama aşağıdaki yapıyı kullanır:
 
 ### Temel Bileşenler
 
-#### 1. **Önyüz (Streamlit)**
+#### 1. **Frontend (Streamlit)**
 
 - Kullanıcı etkileşimlerini yönetir.
-- Amazon ürün linklerini girmek için form sunar.
+- Amazon ürün linklerini girmek için bir alan sunar.
 - Kategori puanları, özetler ve detaylı yorumlar dahil olmak üzere analiz sonuçlarını görüntüler.
 - Dosya: `amazon-ui/amazon_streamlit.py`.
 
-#### 2. **Arka Uç (FastAPI)**
+#### 2. **Backend (FastAPI)**
 
-- Sınıflandırma ve özetleme için API uç noktaları sağlar.
+- Sınıflandırma ve özetleme için API endpointleri sağlar.
 - Kullanıcı girdilerini işler ve veri çekimi ile model çıkarımlarını yönetir.
 - Dosya: `app.py`.
 
 #### 3. **Amazon API**
 
-- RapidAPI entegrasyonu kullanarak yorumları çeker.
-- Sayfalama işlemleri ile 200k'ye kadar yorumu alır.
+- RapidAPI 'Amazon Real Data API' entegrasyonu kullanarak yorumları çeker.
 - Dosya: `src/amazon_api.py`.
 
-#### 4. **Sınıflandırma**
+#### 4. **Sınıflandırma (Classification)**
 
-- Yorumları sınıflandırmak için ince ayarlanmış bir transformer tabanlı model kullanır.
+- Yorumları sınıflandırmak için etiketlenmiş review dataset ile fine-tuning yapılmış bir transformer tabanlı model kullanır.
 - Kategoriler: Ürün Kalitesi, Paketleme/Teslimat, Fiyat/Performans, Ürün Tasarımı.
 - Dosya: `src/classification.py`.
 
-#### 5. **Özetleme**
+#### 5. **Özetleme (Summerization)**
 
-- NLP modeli (Llama3 gibi) kullanarak kategori bazında özetler ve genel sonuçlar oluşturur.
+- Bir llm modeli olan Llama3 kullanarak kategori bazında özetler ve genel sonuçlar oluşturur.
 - Dosya: `src/summarization.py`.
 
 ### Docker Entegrasyonu
@@ -187,12 +186,7 @@ Ağ yapılandırmalarını doğrulamak için şu komutu çalıştırabilirsiniz:
 docker network inspect amazonreviewlab-network
 ```
 
-## Gelecek Planları
 
-- Ek kategorilerle sınıflandırma modelini geliştirin.
-- Çok dilli desteğini iyileştirin.
-- Daha derin içgörüler için gelişmiş görünteleme seçenekleri ekleyin.
-
-## Katkı Sağlayanlar
+## Geliştirici
 
 - **Ebubekir Tosun** - Geliştirici ve Bakımcı
