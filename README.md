@@ -157,6 +157,12 @@ Amazon Review Lab uygulamasını Docker üzerinden çalıştırmak için iki kon
    docker run -d -p 4000:4000 --network amazonreviewlab-network --name amazonreviewlab ebubekirsoftware/amazonreviewlab
    ```
 
+Ağ yapılandırmalarını doğrulamak için şu komutu çalıştırabilirsiniz:
+
+```bash
+docker network inspect amazonreviewlab-network
+```
+
 ##### Uygulamanın Başlatılması
 - Docker konteynerleri başlatıldıktan sonra, `amazon-ui` klasöründe bulunan `amazon_streamlit.py` dosyasını çalıştırarak uygulamayı başlatabilirsiniz:
   ```bash
@@ -213,12 +219,6 @@ Her iki yöntemle de uygulama aynı şekilde çalışacaktır. Docker ile çalı
 - **Kategorilendirme**: Kategorilere ayrılmış yorumlar ve duygu puanları.
 - **Özetleme**: Yorumlara dayalı kısa ve kullanılabilir içgörüler.
 ![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/blob/main/pics/points.png))
-
-Ağ yapılandırmalarını doğrulamak için şu komutu çalıştırabilirsiniz:
-
-```bash
-docker network inspect amazonreviewlab-network
-```
 
 
 ## Geliştirici
