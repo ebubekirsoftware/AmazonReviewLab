@@ -4,8 +4,9 @@
 
 ![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/blob/main/pics/amazon.avif)
 
-Sunum: https://prezi.com/view/lntWzgEhf5OaKi6v6lGD/
-Sunum Videosu: https://www.loom.com/share/c3276f30212341c8abf706ffc8f5387b?sid=d9058ec2-2279-48d9-b813-875dc164d17b
+*Sunum: https://prezi.com/view/lntWzgEhf5OaKi6v6lGD/*
+
+*Sunum Videosu: https://www.loom.com/share/c3276f30212341c8abf706ffc8f5387b?sid=d9058ec2-2279-48d9-b813-875dc164d17b*
 
 ## Genel Bakış
 
