@@ -112,50 +112,89 @@ Ollama, büyük dil modellerinin (LLM) yerel olarak çalıştırılması için t
 
 
 
-
-
-
-
-
-
-
-
-
-
-### Docker Entegrasyonu
-
-- **Konteynerler**: Uygulama iki Docker konteyneriyle yönetilir—biri ana API, diğeri ise özetleme modeli içindir.
-- **Çekme Komutu**: İlgili Docker imajını çekmek için:
-  ```
-  docker pull ebubekirsoftware/amazonreviewlab
-  ```
-
 ## Kurulum
 
 ### Gereksinimler
 
 - Python 3.11 veya daha yenisi
-- Docker yüklenmiş olmalı
+- Docker ve Ollama yüklenmiş olmalı
 - `.env` dosyası RapidAPI kimlik bilgileriyle yapılandırılmış olmalı
 
-### Adımlar
 
-1. Depoyu klonlayın.
+### Docker Entegrasyonu ve Manuel Çalıştırma
+
+#### Docker ile Çalıştırma
+Amazon Review Lab uygulamasını Docker üzerinden çalıştırmak için iki konteyner yapılandırılması gerekmektedir. Bu konteynerler aynı Docker ağı üzerinde olmalıdır. Aşağıda adım adım kurulum ve yapılandırma talimatları verilmiştir:
+
+##### Gerekli Konteynerler
+1. **Amazon Review Lab API Konteyneri**:
+   - Docker Hub'dan ilgili imajı çekmek için:
+     ```bash
+     docker pull ebubekirsoftware/amazonreviewlab
+     ```
+2. **Ollama Konteyneri**:
+   - Ollama konteynerini çekmek için aşağıdaki komutu kullanın:
+     ```bash
+     docker pull ollama/ollama
+     ```
+   - Ollama konteyneri başlatıldıktan sonra Llama3 modelini indirmek için şu komutu çalıştırın:
+     ```bash
+     ollama pull llama3
+     ```
+
+##### Ortak Ağ Oluşturma ve Konteynerlerin Çalıştırılması
+1. Docker ağı oluşturun:
+   ```bash
+   docker network create amazonreviewlab-network
    ```
+2. Ollama konteynerini ağı belirterek başlatın:
+   ```bash
+   docker run -d --network amazonreviewlab-network --name ollama ollama/ollama
+   ```
+   - Ollama konteyneri başlatıldıktan sonra Llama3 modelini indirin ve yapılandırın.
+3. Amazon Review Lab API konteynerini aynı ağ üzerinde çalıştırın:
+   ```bash
+   docker run -d -p 4000:4000 --network amazonreviewlab-network --name amazonreviewlab ebubekirsoftware/amazonreviewlab
+   ```
+
+##### Uygulamanın Başlatılması
+- Docker konteynerleri başlatıldıktan sonra, `amazon-ui` klasöründe bulunan `amazon_streamlit.py` dosyasını çalıştırarak uygulamayı başlatabilirsiniz:
+  ```bash
+  streamlit run amazon-ui/amazon_streamlit.py
+  ```
+- Port numaralarının görseldeki gibi yapılandırıldığından emin olun:
+  - Amazon API Konteyneri: `4000:4000`
+  - Ollama Konteyneri: `11434:11434`
+
+#### Manuel Kurulum (Docker Kullanılmadan)
+Docker kullanmadan Amazon Review Lab uygulamasını çalıştırmak için aşağıdaki adımları takip edin:
+
+##### Gerekli Adımlar
+1. GitHub reposunu klonlayın:
+   ```bash
    git clone https://github.com/your-repo/amazon-review-lab.git
    ```
-2. Proje dizinine gidin.
-   ```
+2. Proje dizinine gidin:
+   ```bash
    cd amazon-review-lab
    ```
-3. Bağımlılıkları yükleyin.
-   ```
+3. Gereksinimleri yükleyin:
+   ```bash
    pip install -r requirements.txt
    ```
-4. Uygulamayı başlatın.
+4. Uygulamayı FastAPI üzerinden çalıştırın:
+   ```bash
+   uvicorn app:app --port 4000
    ```
-   python app.py
-   ```
+
+##### Uygulamanın Başlatılması
+- FastAPI çalıştıktan sonra, `amazon-ui` klasöründeki `amazon_streamlit.py` dosyasını çalıştırarak uygulamaya bağlanabilirsiniz:
+  ```bash
+  streamlit run amazon-ui/amazon_streamlit.py
+  ```
+
+Her iki yöntemle de uygulama aynı şekilde çalışacaktır. Docker ile çalıştırma, özellikle bağımlılıkların izolasyonu ve dağıtım kolaylığı açısından önerilir.
+
 
 ## Kullanım
 
@@ -168,43 +207,12 @@ Ollama, büyük dil modellerinin (LLM) yerel olarak çalıştırılması için t
 2. Bir Amazon ürün linki girin ve `Analyze` butonuna tıklayın.
 3. Kategorize edilmiş sonuçları ve özetleri görüntüleyin.
 
-### FastAPI Uç Noktaları
-
-1. FastAPI sunucusunu başlatın.
-   ```
-   uvicorn app:app --reload
-   ```
-2. API dokümantasyonuna erişin: `http://127.0.0.1:8000/docs`.
 
 ## Örnek Çıktılar
 
 - **Kategorilendirme**: Kategorilere ayrılmış yorumlar ve duygu puanları.
 - **Özetleme**: Yorumlara dayalı kısa ve kullanılabilir içgörüler.
-
-## Özel Not: Docker ile Çalıştırma Yapılandırmaları
-
-Amazon Review Lab uygulamasını Streamlit üzerinden çalıştırırken aşağıdaki Docker yapılandırmalarını uygulamanız gereklidir.
-
-### Ortak Ağ Üzerinde Çalışma Gerekliliği
-
-Bu uygulamanın doğru şekilde çalışabilmesi için, **ollama2** konteyneri (Llama3 modelini barındırır) ile aynı Docker ağı üzerinde bulunması gerekir.
-
-#### Ortak Ağ Oluşturma
-
-1. Docker ağı oluşturun:
-   ```bash
-   docker network create amazonreviewlab-network
-   ```
-2. Ollama konteynerini çalıştırırken ağı belirtin:
-   ```bash
-   docker run -d --network amazonreviewlab-network --name ollama2 ollama/ollama
-   ```
-3. Amazon Review Lab konteynerini çalıştırırken aynı ağı kullanın:
-   ```bash
-   docker run -d -p 8000:8000 --network amazonreviewlab-network --name amazonreviewlab ebubekirsoftware/amazonreviewlab
-   ```
-
-#### Ağ Durumunu Kontrol Etme
+![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/blob/main/pics/points.png))
 
 Ağ yapılandırmalarını doğrulamak için şu komutu çalıştırabilirsiniz:
 
@@ -216,3 +224,5 @@ docker network inspect amazonreviewlab-network
 ## Geliştirici
 
 - **Ebubekir Tosun** - Geliştirici ve Bakımcı
+
+
