@@ -112,7 +112,7 @@ Ollama, büyük dil modellerinin (LLM) yerel olarak çalıştırılması için t
 
 
 
-## Kurulum
+# Kurulum
 
 ### Gereksinimler
 
@@ -121,9 +121,9 @@ Ollama, büyük dil modellerinin (LLM) yerel olarak çalıştırılması için t
 - `.env` dosyası RapidAPI kimlik bilgileriyle yapılandırılmış olmalı
 
 
-### Docker Entegrasyonu ve Manuel Çalıştırma
+## Docker Entegrasyonu ve Manuel Çalıştırma
 
-#### Docker ile Çalıştırma
+### Docker ile Çalıştırma
 Amazon Review Lab uygulamasını Docker üzerinden çalıştırmak için iki konteyner yapılandırılması gerekmektedir. Bu konteynerler aynı Docker ağı üzerinde olmalıdır. Aşağıda adım adım kurulum ve yapılandırma talimatları verilmiştir:
 
 ##### Gerekli Konteynerler
@@ -166,7 +166,7 @@ Amazon Review Lab uygulamasını Docker üzerinden çalıştırmak için iki kon
   - Amazon API Konteyneri: `4000:4000`
   - Ollama Konteyneri: `11434:11434`
 
-#### Manuel Kurulum (Docker Kullanılmadan)
+### Manuel Kurulum (Docker Kullanılmadan)
 Docker kullanmadan Amazon Review Lab uygulamasını çalıştırmak için aşağıdaki adımları takip edin:
 
 ##### Gerekli Adımlar
