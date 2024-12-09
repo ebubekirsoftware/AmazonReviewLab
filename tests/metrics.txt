@@ -1,0 +1,30 @@
+finetuned_classification_model
+
+Performans Metrikleri:
+accuracy: 0.8095
+precision: 0.8953
+recall: 0.9039
+f1: 0.8995
+
+
+Kategori Bazlı Metrikler:
+  URUN_KALITESI:
+    accuracy: 0.9265
+    precision: 0.9458
+    recall: 0.9669
+    f1: 0.9562
+  PAKETLEME/TESLIMAT:
+    accuracy: 0.9565
+    precision: 0.8550
+    recall: 0.8789
+    f1: 0.8668
+  FIYAT/PERFORMANS:
+    accuracy: 0.9830
+    precision: 0.9392
+    recall: 0.9321
+    f1: 0.9356
+  URUN_TASARIMI:
+    accuracy: 0.9250
+    precision: 0.8412
+    recall: 0.8376
+    f1: 0.8394

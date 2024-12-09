@@ -1,0 +1,8 @@
+requests==2.32.3
+python-dotenv==1.0.1
+torch==2.5.1
+transformers==4.46.3
+ollama==0.4.2
+fastapi==0.115.6
+pydantic==2.10.3
+uvicorn
