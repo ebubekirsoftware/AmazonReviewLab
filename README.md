@@ -14,7 +14,7 @@ Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmi�
 - **Duygu Analizi**: Her kategoriye duygu puanları atar ve genel bir duygu puanı hesaplar.
 - **Kullanıcı Dostu Arayüz**: Web tabanlı bir arayüz ve FastAPI uç noktalarıyla kolay bir deneyim sunar.
 
-## Uygulama Akışı
+## Uygulama İş Akışı
 
 1. **Kullanıcı Girişi**: Uygulamaya Amazon ürün linki girilir.
 2. **Veri Çekimi**: Amazon API'si kullanılarak yorumlar elde edilir.
