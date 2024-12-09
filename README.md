@@ -19,7 +19,7 @@ Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmi�
 1. **Kullanıcı Girişi**: Uygulamaya Amazon ürün linki girilir.
 2. **Veri Çekimi**: Amazon API'si kullanılarak yorumlar elde edilir.
 3. **Yorum Sınıflandırma**: Yorumlar, önceden eğitilmiş bir model kullanılarak kategorilere ayrılır.
-4. **Özetleme**: Gelişmiş doğal dil işleme teknikleriyle kategorize edilmiş yorumlar özetlenir.
+4. **Özetleme**: Kategorize edilmiş yorumlar Ollama ile kurulan yerel llama3 modeli ile özetlenir.
 5. **Sonuç Görüntüleme**: Sonuçlar, her kategoriyi detaylıca inceleme imkânıyla bir panoda sunulur.
 
 ![Schema](https://github.com/ebubekirsoftware/AmazonReviewLab/raw/main/pics/schema.png)
@@ -30,10 +30,12 @@ Amazon Review Lab, Amazon ürün yorumlarını analiz etmek için geliştirilmi�
 Uygulama aşağıdaki yapıyı kullanır:
 
 - **Frontend**: Etkileşimli bir kullanıcı deneyimi için Streamlit ile geliştirilmiştir.
-- **Backend**: API isteklerini ve model çıkarımlarını yönetmek için FastAPI kullanılmıştır.
+- **Backend**: API isteklerini ve model çıkarımlarını yönetmek için FastAPI kullanılmıştır. Docker entegrasyonuyla güçlü bir altyapı kurulmuştur. Tüm backend süreçlerinde dosya formatı JSON kullanılmıştır.
 - **Data Pipeline**: Veri toplama, işleme ve görüntüleme için birden fazla bileşen entegre edilmiştir.
 
 ### Dosya Yapısı
+Bu proje, modüler tasarlanmış bir dosya yapısına sahiptir. Her bir dizin ve dosya, belirli bir işlevi yerine getirmek üzere organize edilmiştir. Bu yapının amacı, kodun okunabilirliğini artırmak, sürdürmeyi kolaylaştırmak ve geliştirme sürecini daha verimli hale getirmektir.
+
 
 ```
 .
@@ -95,7 +97,7 @@ Uygulama aşağıdaki yapıyı kullanır:
 
 #### 5. **Özetleme (Summerization)**
 
-- Bir llm modeli olan Llama3 kullanarak kategori bazında özetler ve genel sonuçlar oluşturur.
+- Bir llm modeli olan Llama3 kullanarak kategori bazında özetler ve genel sonuçlar oluşturur. Model local bir şekilde Ollama üzerinden kullanılır.
 - Dosya: `src/summarization.py`.
 
 ### Docker Entegrasyonu
